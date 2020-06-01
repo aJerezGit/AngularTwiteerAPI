@@ -1,0 +1,9 @@
+<div class="container h-100">
+  <div class="d-flex justify-content-center h-100">
+    <div class="searchbar">
+      <input class="search_input" type="text" name="filter" placeholder="Search..." [(ngModel)]="filter" (keypress)="keySearch($event)">
+      <button [disabled]="filter.includes('#')  || filter.includes('@')" class="search_icon" (click)="searchFilter($event)"><i class="fa fa-search"></i></button>
+    </div>
+  </div>
+  <label class="text-danger" *ngIf="filter.includes('#')  || filter.includes('@')">The "#" or "@" character is not Allowed.</label>
+</div>
