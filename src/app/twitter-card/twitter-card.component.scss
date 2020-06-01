@@ -1,0 +1,53 @@
+
+.appSearchContent {
+    background-color: rgb(38, 164, 186);
+    padding-bottom: 20px;
+} 
+.TwitData {
+    padding-top: 150px;
+}
+
+.liked {
+        color: red;
+}
+
+.disliked {
+    color: black;
+}
+
+.halfCircle {
+    height: 45px;
+    width: 90px;
+    border-top-left-radius: 90px;
+    border-top-right-radius: 90px;
+    background-color: rgb(38, 164, 186);
+    text-align: center;
+    margin: 0 auto;
+}
+
+.birdStyle {
+    color: white;
+    padding-top: 10px;
+}
+
+.extraInfo {
+    background-color: rgb(38, 164, 186);
+    z-index: 0;
+    margin: 0 20px 10px 20px;
+    padding: 10px;
+}
+
+.twitter-text {
+    color: #fff;
+    text-align: justify;
+}
+
+.smalldesc.active {
+    max-height:5px;
+    overflow:hidden;
+    transition:all .5s ease;
+}
+
+.smalldesc { 
+    max-height:100%;
+}

@@ -1,0 +1,82 @@
+<div class="appSearchContent fixed-top">
+  <h1 class="text-center font-weight-bold text-white">Twitter search</h1>
+  <app-search-bar (dataFiltered)="updateData($event)"></app-search-bar>
+</div>
+<div class="container TwitData">
+  <div class="search-results" 
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled) = "onScroll()"
+  >
+    <div class="row pt-5">
+    <div *ngIf="!twits">Loading...</div>
+    <div class="col-md-4 p-2 card-group" *ngFor="let tweet of twits; let i = index">
+      <div class="card shadow" id="{{i}}">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <img class="card-img" src="{{tweet.user.profile_image_url}}" alt="">
+            </div>
+            <div class="col-md-8">
+              <h5>{{tweet.user.name}}</h5>
+              <h6 class="font-weight-light">@{{tweet.user.screen_name}}</h6>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <hr>
+                <p class="card-text text-left">{{tweet.full_text | slice:0:30}}...</p>
+              <hr>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-md-4">
+              <i class="fa fa-share" (click)="copyToClipBoard(i)"></i>
+            </div>
+            <div class="col-md-4">
+              <i class="fa fa-retweet"></i>
+            </div>
+            <div class="col-md-4">
+              <i class="fa fa-star liked" *ngIf="localStorageItem(tweet.id) == 'liked'" (click)="favorite(tweet.id)"></i>
+              <i class="fa fa-star disliked" *ngIf="localStorageItem(tweet.id) != 'liked'" (click)="favorite(tweet.id)"></i>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="halfCircle">
+            <i class="fa fa-twitter fa-2x birdStyle"></i>
+          </div>
+        </div>
+      </div>
+      <div class="row extraInfo">
+        <div class="twitter-text">
+          <div #ele class="smalldesc" [ngClass]="{'active': ele.class !== 'active'}">
+            <hr>
+            <p class="card-text">{{tweet.created_at}}</p>
+            <hr>
+            <p class="card-text">{{tweet.full_text}}</p>
+            <i class="fa fa-angle-up align-right"></i>
+          </div>
+          <label class="fa fa-angle-down" (click)="ele.class = ele.class == 'active' ? '' :  'active'"></label>
+        </div>
+      </div>
+    </div>    
+    </div>
+    
+  </div>
+  <!--Spinner-->
+  <div class="row pb-5">
+    <div class="col-md-12 p-5">
+      <ngx-spinner
+      bdOpacity = 0.9
+      bdColor = ""
+      size = "default"
+      color = "#581f87"
+      type = "ball-pulse-sync"
+      [fullScreen] = "false"
+      >
+      </ngx-spinner>
+    </div>
+    </div>
+</div>
