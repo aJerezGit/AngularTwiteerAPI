@@ -73,7 +73,7 @@ export class TwitterCardComponent implements OnInit {
     document.execCommand('copy');
     document.body.removeChild(dummy);
     
-    this.Toast.fire({
+    this.Toast({
       title: 'Tweet link copied to the clipboard.'
     })
   }
@@ -82,13 +82,13 @@ export class TwitterCardComponent implements OnInit {
     if(!localStorage.getItem(element)) {
       localStorage.setItem(element, 'liked');
       
-      this.Toast.fire({
+      this.Toast({
         title: 'Saved to favorites.'
       })
     }
     else {
       localStorage.removeItem(element);
-      this.Toast.fire({
+      this.Toast({
         title: 'Removed from favorites.'
       })
     }

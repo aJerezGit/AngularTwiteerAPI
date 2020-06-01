@@ -31,7 +31,7 @@ export class SearchBarComponent implements OnInit {
             }
           })
           
-          Toast.fire({
+          Toast({
             title: 'There is no tweets for your search.'
           })
         }
