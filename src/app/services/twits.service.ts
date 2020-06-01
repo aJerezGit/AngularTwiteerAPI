@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class TwitsService {
 
   constructor(private http: HttpClient) { }
-  baseUrl: string = 'http://localhost:3000/'
+  baseUrl: string = 'https://nodeservertwitter.herokuapp.com/'
 
   getTweets(): Observable<any> {
     return this.http.get(this.baseUrl+'tweets');
